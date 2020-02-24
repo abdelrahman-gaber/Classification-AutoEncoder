@@ -1,0 +1,10 @@
+bird 2500
+deer 2500
+truck 2500
+airplane 3000
+automobile 3000
+cat 3000
+dog 3000
+frog 3000
+horse 3000
+ship 3000
