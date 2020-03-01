@@ -7,43 +7,6 @@ from tensorflow.keras.models import Model
 from tensorflow.keras import regularizers
 
 
-def Net1(input_img, no_dense=False, use_strided_conv=False):
-    weight_decay = 0.0001
-    x = Conv2D(32, (3, 3), activation='relu', padding='same', kernel_regularizer=regularizers.l2(weight_decay), name='conv_1')(input_img)
-    x = Conv2D(32, (3, 3), activation='relu', padding='same', kernel_regularizer=regularizers.l2(weight_decay), name='conv_1_2')(x)
-    if use_strided_conv:
-        x = Conv2D(32, (3, 3), activation='relu', padding='same', strides=2, kernel_regularizer=regularizers.l2(weight_decay), name='conv_1_s')(x)
-    else:
-        x = MaxPooling2D((2, 2), strides=(2, 2), name='pool_1')(x)
-
-    x = Conv2D(64, (3, 3), activation='relu', padding='same', kernel_regularizer=regularizers.l2(weight_decay), name='conv_2')(x)
-    x = Conv2D(64, (3, 3), activation='relu', padding='same', kernel_regularizer=regularizers.l2(weight_decay), name='conv_2_2')(x)
-    if use_strided_conv:
-        x = Conv2D(64, (3, 3), activation='relu', padding='same', strides=2, kernel_regularizer=regularizers.l2(weight_decay), name='conv_2_s')(x)
-    else:
-        x = MaxPooling2D((2, 2), strides=(2, 2), name='pool_2')(x)
-
-    x = Conv2D(128, (3, 3), activation='relu', padding='same', kernel_regularizer=regularizers.l2(weight_decay), name='conv_3')(x)
-    x = Conv2D(128, (3, 3), activation='relu', padding='same', kernel_regularizer=regularizers.l2(weight_decay), name='conv_3_2')(x)
-    if use_strided_conv:
-        x = Conv2D(128, (3, 3), activation='relu', padding='same', strides=2, kernel_regularizer=regularizers.l2(weight_decay), name='conv_3_s')(x)
-    else:
-        x = MaxPooling2D((2, 2), strides=(2, 2), name='pool_3')(x)
-
-    x = Conv2D(256, (3, 3), activation='relu', padding='same', kernel_regularizer=regularizers.l2(weight_decay), name='conv_4')(x)
-    x = Conv2D(256, (3, 3), activation='relu', padding='same', kernel_regularizer=regularizers.l2(weight_decay), name='conv_4_2')(x)
-    if use_strided_conv:
-        x = Conv2D(256, (3, 3), activation='relu', padding='same', strides=2, kernel_regularizer=regularizers.l2(weight_decay), name='conv_4_last')(x)
-    else:
-        x = MaxPooling2D((2, 2), strides=(2, 2), name='pool_4')(x)
-
-    if not no_dense:
-        x = Flatten()(x)
-        x = Dense(1024, activation='relu', kernel_regularizer=regularizers.l2(weight_decay), name='latent_feats')(x)
-
-    return x
-
-# the best 
 def Net1_bn(input_img, weight_decay = 0.0001):
 
     x = Conv2D(32, (3, 3), activation='relu', padding='same', kernel_regularizer=regularizers.l2(weight_decay), name='conv_1')(input_img)
@@ -74,7 +37,6 @@ def Net1_bn(input_img, weight_decay = 0.0001):
     x = Dense(1024, activation='relu', kernel_regularizer=regularizers.l2(weight_decay), name='latent_feats')(x)
 
     return x
-
 
 def Net1_Decoder(encoder, weight_decay = 0.0001):
 

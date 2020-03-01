@@ -42,7 +42,7 @@ class SaveOutputImages(Callback):
             plt.gray()
             ax.get_xaxis().set_visible(False)
             ax.get_yaxis().set_visible(False)
-        plt.savefig(self.out_dir + "/" + "ae_ep%d.jpg"%(self.count),  bbox_inches='tight', dpi=300)
+        plt.savefig(self.out_dir + "/" + "ae_ep%d.jpg"%(self.count),  bbox_inches='tight', dpi=100)
         plt.close('all')
 
 # generate same image patch for input and output
@@ -149,7 +149,7 @@ for i in range(n):
     plt.gray()
     ax.get_xaxis().set_visible(False)
     ax.get_yaxis().set_visible(False)
-plt.savefig(out_dir + "/ae_trained_ep%d.jpg"%(nb_epoch), dpi=300)
+plt.savefig(out_dir + "/ae_trained_ep%d.jpg"%(nb_epoch), bbox_inches='tight', dpi=100)
 #plt.show()
 plt.close()
 
@@ -160,6 +160,6 @@ plt.title('Model loss')
 plt.ylabel('Loss')
 plt.xlabel('Epoch')
 plt.legend(['Train', 'Val'], loc='upper left')
-plt.savefig(out_dir + "/" + "train_val_loss_ep%d.jpg"%(nb_epoch),  bbox_inches='tight', dpi=300)
+plt.savefig(out_dir + "/" + "train_val_loss_ep%d.jpg"%(nb_epoch),  bbox_inches='tight', dpi=100)
 #plt.show()
 plt.close()
