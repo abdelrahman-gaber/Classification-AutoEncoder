@@ -7,8 +7,8 @@ from tensorflow.keras.callbacks import  Callback
 
 # learning rate scheduler for classifier
 def lr_schedule(epoch):
-    lrate = 0.0008
-    if epoch > 60:
+    lrate = 0.001
+    if epoch > 70:
         lrate = 0.0002
     elif epoch > 85:
         lrate = 0.00001

@@ -75,8 +75,8 @@ else:
 
 print(model.summary())
 
-#optimizer = SGD(lr=0.001, momentum=0.9, decay=1e-6) 
-optimizer = RMSprop(lr=0.0008, decay=1e-6)
+optimizer = SGD(lr=0.001, momentum=0.9, decay=1e-6) 
+#optimizer = RMSprop(lr=0.0008, decay=1e-6)
 model.compile(optimizer=optimizer,
 			loss='categorical_crossentropy',
 			metrics=['accuracy'])
