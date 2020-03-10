@@ -7,12 +7,20 @@ from tensorflow.keras.callbacks import  Callback
 
 # learning rate scheduler for classifier
 def lr_schedule(epoch):
-    lrate = 0.001
+    lrate = 0.0008
     if epoch > 60:
-        lrate = 0.0001
-    elif epoch > 70:
+        lrate = 0.0002
+    elif epoch > 85:
         lrate = 0.00001
     return lrate
+
+# learning rate scheduler for AutoEncoder
+def lr_schedule_ae(epoch):
+    lrate = 0.00015
+    if epoch > 40:
+        lrate = 0.00005
+    return lrate
+
 
 def GetCifar10Mean():
     return np.array([0.491, 0.482, 0.446], dtype=np.float32).reshape((1,1,3)) # ordering: [R, G, B]
@@ -41,8 +49,8 @@ class SaveOutputImages(Callback):
         self.count+=1
         decoded_imgs = self.model.predict(self.x_test)
 
-        n = 10
-        plt.figure(figsize=(n*2, 2*2))
+        n = 15
+        plt.figure(figsize=(n*1.5, 2*1.45))
         for i in range(n):
             # display original
             ax = plt.subplot(2, n, i+1)
@@ -57,13 +65,13 @@ class SaveOutputImages(Callback):
             plt.gray()
             ax.get_xaxis().set_visible(False)
             ax.get_yaxis().set_visible(False)
-        plt.savefig(self.out_dir + "/" + "ae_ep%d.jpg"%(self.count),  bbox_inches='tight', dpi=100)
+        plt.savefig(self.out_dir + "/" + "ae_ep%d.jpg"%(self.count),  bbox_inches='tight', dpi=150)
         plt.close('all')
 
 
 def VisualizeAE(original_imgs, decoded_imgs , out_dir, epochs):
-    n = 10
-    plt.figure(figsize=(20, 4))
+    n = 15
+    plt.figure(figsize=(n*1.5, 2*1.45))
     for i in range(n):
         # display original
         ax = plt.subplot(2, n, i+1)
@@ -79,7 +87,7 @@ def VisualizeAE(original_imgs, decoded_imgs , out_dir, epochs):
         ax.get_xaxis().set_visible(False)
         ax.get_yaxis().set_visible(False)
 
-    plt.savefig(out_dir + "/ae_trained_ep%d.jpg"%(epochs), bbox_inches='tight', dpi=100)
+    plt.savefig(out_dir + "/ae_trained_ep%d.jpg"%(epochs), bbox_inches='tight', dpi=150)
     #plt.show()
     plt.close()
 

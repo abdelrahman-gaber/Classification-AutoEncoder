@@ -17,11 +17,9 @@ data_dir = args.data_dir
 model_path = args.model_path
 cm_img_path = os.path.splitext(model_path)[0] + "_cm.jpg"
 
-# cifar10 specific values 
-img_width = img_height = 32 
+# cifar10 classes 
 id_cls = {0:"airplane", 1:"automobile", 2:"bird", 3:"cat", 4:"deer", 5:"dog", 6:"frog", 7:"horse", 8:"ship", 9:"truck"}
 target_names = ["airplane", "automobile", "bird","cat", "deer", "dog", "frog", "horse", "ship", "truck"]
-
 
 model = load_model(model_path)
 
@@ -36,7 +34,7 @@ for class_dir in os.listdir(data_dir):
 			if files.is_file() and (files.name.endswith('.png') or files.name.endswith('.jpg')):
 
 				image_pth = os.path.join(class_path, files.name)
-				test_image_in= image.load_img(image_pth) # target_size = (img_width, img_height)) 
+				test_image_in= image.load_img(image_pth)
 				test_image = image.img_to_array(test_image_in)
 				test_image = np.expand_dims(test_image, axis = 0) * 1./255
 				test_image = (test_image - GetCifar10Mean()) / GetCifar10STD()
