@@ -3,7 +3,6 @@ import os
 import argparse
 
 from tensorflow.keras.preprocessing import image
-from tensorflow.keras import backend as K
 from tensorflow.keras.models import load_model
 from Utils import CalculateConfusionMatrix, GetCifar10Mean, GetCifar10STD
 

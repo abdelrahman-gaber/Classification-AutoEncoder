@@ -2,6 +2,7 @@ data/cifar
 data/cifar10_keras
 *.png
 
+.idea/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

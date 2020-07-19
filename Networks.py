@@ -1,9 +1,4 @@
-import argparse
-import os
-import numpy as np
-
-from tensorflow.keras.layers import Input, Dense, Conv2D, MaxPooling2D, UpSampling2D, Flatten, Reshape, BatchNormalization, Dropout
-from tensorflow.keras.models import Model
+from tensorflow.keras.layers import Dense, Conv2D, MaxPooling2D, UpSampling2D, Flatten, Reshape, BatchNormalization, Dropout
 from tensorflow.keras import regularizers
 
 

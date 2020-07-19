@@ -1,7 +1,4 @@
 import argparse
-import os
-import numpy as np
-
 from tensorflow.keras.layers import Input, Dense
 from tensorflow.keras.models import Model
 from tensorflow.keras.preprocessing.image import ImageDataGenerator

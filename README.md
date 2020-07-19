@@ -35,7 +35,7 @@ The evaluation script here is done for cifar10 dataset, but it can be easily mod
 
 ## Requirements
 
-1. Python 3
-2. Keras with tensorflow. The scripts here are developed using Tensorflow version 1.9, but it is expected to work with newer version of tensorflow 1.xx
+1. Python 3.5 or higher
+2. Keras with tensorflow version 1.9 or higher (tested with 1.9, 1.12, and 1.15)
 
 Have fun ^_^ 
